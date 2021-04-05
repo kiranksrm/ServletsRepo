@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Registration Form</title>
+</head>
+<body>
+
+
+<form action="/LibraryManagementSystem/RegisterServlet" method="post">
+
+<span style="color: red">*</span>Name: <input type="text" name="name"/> <br/><br/>
+User ID: <input type="text" name="userName"/> <br/><br/>
+Password: <input type="password" name="Password" /> <br/><br/>
+Confirm Password: <input type="password" name="confirmPassword" /> <br/><br/>
+Gender: <input type="radio" name="geneder"> Male</input> <input type="radio" name="geneder"> Female</input><br/><br/>
+Email ID: <input type="email" name="email"/><br/><br/>
+Address Line1: <input type="text" name="addressLine1"><br/><br/>
+Address Line2: <input type="text" name="addressLine2"><br/><br/>
+City: <select name="userCity">
+	<option>VIJ</option>
+	<option>HYD</option>
+	<option>BGLR</option>
+</select> <br/><br/>
+State: <select name="userState">
+		<option>AP</option>
+		<option>TS</option>
+		<option>KA</option>
+       </select><br/><br/>
+Country: <select name="userCountry">
+		<option>IN</option>
+		<option>US</option>
+		<option>UK</option>
+       </select><br/><br/>
+Zip Code: <select name="zipCode">
+		<option>516203</option>
+		<option>516001</option>
+		<option>560037</option>
+       </select><br/><br/>
+Mobile#: <input type="text" name="mobile"><br/><br/>
+
+<input type="submit" value="Submit"/>
+<input type="reset" value="Reset"/>
+
+</form>
+
+
+
+</body>
+</html>
