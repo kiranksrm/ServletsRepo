@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -36,6 +37,18 @@ public class RegisterServlet extends GenericServlet {
 		String userId=request.getParameter("userName");
 		String password= request.getParameter("Password");
 		String confirmPassword = request.getParameter("confirmPassword");
+		
+		if(!password.equalsIgnoreCase(confirmPassword))
+		{
+			response.setContentType("text/html");
+			PrintWriter out=response.getWriter();
+			out.print("Both Password and confirm passwords didnot match..");
+			RequestDispatcher rd=request.getRequestDispatcher("error.html");  
+	        rd.include(request,response); 
+			//throw new ServletException("invalid password");
+		}
+		
+		
 		String gender= request.getParameter("geneder");
 		String email= request.getParameter("email");
 		String addressLine1 =request.getParameter("addressLine1");
@@ -56,12 +69,12 @@ public class RegisterServlet extends GenericServlet {
 		//2. Get The Connection Obj by using DriverManager.getConnection();
 		Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lms", "root", "admin");
 		
-		String insertQuery="insert into user values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String insertQuery="insert into user(full_name,user_name, user_password, gender, email_id,address_line1,address_line2,city,state,country,zipcode, mobile)values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(insertQuery);
 		ps.setString(1, name);
 		ps.setString(2, userId);
 		ps.setString(3, confirmPassword);
-		ps.setString(4, gender);
+		ps.setString(4, ((null!=gender || gender.length()>0)?gender:"Male"));
 		ps.setString(5, email);
 		ps.setString(6, addressLine1);
 		ps.setString(7, addressLine2);
