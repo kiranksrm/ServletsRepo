@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -32,6 +33,8 @@ public class RegisterServlet extends GenericServlet {
 	 * @see Servlet#service(ServletRequest request, ServletResponse response)
 	 */
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+		
+		ServletConfig config=getServletConfig();
 		
 		String name=request.getParameter("name");
 		String userId=request.getParameter("userName");
