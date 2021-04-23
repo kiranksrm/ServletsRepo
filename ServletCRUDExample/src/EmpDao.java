@@ -82,5 +82,33 @@ public class EmpDao {
 //		
 //	}
 	
-	
+	public static List<Emp> search(String queryStr)
+	{
+		Connection con= getConnection();
+		List<Emp> empList= new ArrayList<Emp>();
+		try {
+			//con.prepareStatement("select * from user where name like '%"+queryStr+"%'");
+			//PreparedStatement ps=con.prepareStatement("select * from user where name= ?");
+			PreparedStatement ps=con.prepareStatement("select * from user where email like ? OR id like ?");
+			ps.setString(1, "%"+queryStr+"%");
+			ps.setString(2, queryStr);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				Emp e= new Emp();
+				e.setId(rs.getInt(1));
+				e.setName(rs.getString(2));
+				e.setPassword(rs.getString(3));
+				e.setEmail(rs.getString(4));
+				e.setCountry(rs.getString(5));
+				empList.add(e);
+			}
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return empList;
+		
+	}
 }
