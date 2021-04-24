@@ -63,7 +63,7 @@ public class ViewServlet extends HttpServlet {
 		if(pageNum==1)
 		{
 			for(int j=0;j<empList.size();j++)
-			{
+			{ 
 				Emp e=empList.get(j);
 				if(count>2)
 					break;
