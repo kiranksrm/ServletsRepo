@@ -47,7 +47,12 @@ public class SearchServlet extends HttpServlet {
 			out.print("<tr> <td>"+e.getId()+"</td> <td>"+e.getName()+"</td> <td>"+e.getPassword()+"</td> <td>"+e.getEmail()+"</td> <td>"+e.getCountry()+"</td> <td> <a href='EditServlet?id="+e.getId()+"'>Edit</a></td> <td> <a href='DeleteServlet?id="+e.getId()+"'>Delete</a></td>           </tr>");
 		}
 		out.print("</table>");
-		
+		out.print("<a href=\"#\">Export to WORD</a> &nbsp;&nbsp;&nbsp;<a href=\"/ExportToPDF\">Export to PDF</a>");
+		out.print("<br/>");
+		out.print("<a href=\"https://www.qries.com/\">\r\n"
+				+ "         <img alt=\"Qries\" src=\"https://www.qries.com/images/banner_logo.png\"\r\n"
+				+ "         width=60\" height=\"30\">\r\n"
+				+ "      </a>");
 	}
 
 	/**
