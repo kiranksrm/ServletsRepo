@@ -13,6 +13,7 @@ public class Outer {
  		o.add(10, 20);
  		
  		Outer.Inner i = o.new Inner();
+ 		Outer.Inner i1= new Outer().new Inner();
  		i.msg();
  		System.out.println(i.sub(20, 10));
  	}
@@ -32,4 +33,4 @@ public class Outer {
   
  
 
-}
+}//Outer class
